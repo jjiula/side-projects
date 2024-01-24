@@ -16,74 +16,92 @@ public class ScopaScoringCLI {
 
         System.out.println("Please enter the number of cards each player/team has.");
         //enter card counter
-        System.out.println("Player/Team 1:");
+        System.out.println("Player/Team 1: ");
         int player1CardCounter = scanner.nextInt();
+        if (player1CardCounter > 40 || player1CardCounter < 0) {
+            System.out.println("Invalid number of cards. Must be between 0 and 40.");
+        } else {
+            int player2CardCounter = 40 - player1CardCounter;
 
-        System.out.println("Player/Team 2:");
-        int player2CardCounter = scanner.nextInt();
+            System.out.println("Player/Team 1: " + player1CardCounter + " cards");
+            System.out.println("Player/Team 2: " + player2CardCounter + " cards");
 
-        // if card count = 20 no one gets a point
-        if (player1CardCounter == player2CardCounter) {
-            System.out.println("No one gets a point for cards this round.");
+            // if card count = 20 no one gets a point
+            if (player1CardCounter == player2CardCounter) {
+                System.out.println("No one gets a point for cards this round.");
 
-            // if card count > 20 that player gets a point
-        } else if (player1CardCounter > player2CardCounter) {
-            System.out.println("Player/Team 1 gets the card point for this round.");
-            player1Score++;
+                // if card count > 20 that player gets a point
+            } else if (player1CardCounter > player2CardCounter) {
+                System.out.println("Player/Team 1 gets the card point for this round.");
+                player1Score++;
 
-            // if card count < 20 the other player gets a point
-        } else if (player2CardCounter > player1CardCounter) {
-            System.out.println("Player/Team 2 gets the card point for this round.");
-            player2Score++;
+                // if card count < 20 the other player gets a point
+            } else if (player2CardCounter > player1CardCounter) {
+                System.out.println("Player/Team 2 gets the card point for this round.");
+                player2Score++;
+            }
+            System.out.println("***Score***");
+            System.out.println("Player/Team 1 Score: " + player1Score);
+            System.out.println("Player/Team 2 Score: " + player2Score);
+            System.out.println("***************************");
         }
-        System.out.println("Player/Team 1 Score: " + player1Score);
-        System.out.println("Player/Team 2 Score: " + player2Score);
 
 
         //enter coin count
         System.out.println("Please enter the number of coins each player/team has.");
         System.out.println("Player/Team 1:");
         int player1CoinCount = scanner.nextInt();
-        System.out.println("Player/Team 2:");
-        int player2CoinCount = scanner.nextInt();
+        if (player1CoinCount > 10 || player1CoinCount < 0) {
+            System.out.println("Invalid number of coins. Must be between 0-10.");
+        } else {
+            int player2CoinCount = 10 - player1CoinCount;
 
+            System.out.println("Player/Team 1: " + player1CoinCount + " coins");
+            System.out.println("Player/Team 2: " + player2CoinCount + " coins");
 
-        // if coin count = 5 no one gets a point
-        if (player1CoinCount == player2CoinCount) {
-            System.out.println("No one gets a point for coins this round.");
+            // if coin count = 5 no one gets a point
+            if (player1CoinCount == player2CoinCount) {
+                System.out.println("No one gets a point for coins this round.");
 
-        // if coin count > 5 that player gets a point
-        } else if (player1CoinCount > player2CoinCount) {
-            System.out.println("Player/Team 1 gets the coin point for this round.");
-            player1Score++;
+                // if coin count > 5 that player gets a point
+            } else if (player1CoinCount > player2CoinCount) {
+                System.out.println("Player/Team 1 gets the coin point for this round.");
+                player1Score++;
 
-        // if coin count < 5 the other player gets a point
-        } else if (player2CoinCount > player1CoinCount) {
-            System.out.println("Player/Team 2 gets the coin point for this round.");
-            player2Score++;
+                // if coin count < 5 the other player gets a point
+            } else if (player2CoinCount > player1CoinCount) {
+                System.out.println("Player/Team 2 gets the coin point for this round.");
+                player2Score++;
+            }
+            System.out.println("***Score***");
+            System.out.println("Player/Team 1 Score: " + player1Score);
+            System.out.println("Player/Team 2 Score: " + player2Score);
+            System.out.println("***************************");
         }
-        System.out.println("Player/Team 1 Score: " + player1Score);
-        System.out.println("Player/Team 2 Score: " + player2Score);
 
 
         System.out.println("Which player/team received the Sette di Denari (Seven of Coins) card [1 or 2]?");
         //enter sette bello
-        int setteBelloInput = scanner.nextInt();
+        int setteDiDenariInput = scanner.nextInt();
 
         // if player 1, give player 1 a point
-        if (setteBelloInput == 1) {
+        if (setteDiDenariInput == 1) {
+            System.out.println("Player/Team 1 gets the Sette di Denari point for this round.");
             player1Score++;
 
         // if player 2, give player 2 a point
-        } else if (setteBelloInput == 2) {
+        } else if (setteDiDenariInput == 2) {
+            System.out.println("Player/Team 2 gets the Sette di Denari point for this round.");
             player2Score++;
 
         // ensure there is a valid input
         } else {
             System.out.println("Please enter a valid team/player number.");
         }
+        System.out.println("***Score***");
         System.out.println("Player/Team 1 Score: " + player1Score);
         System.out.println("Player/Team 2 Score: " + player2Score);
+        System.out.println("***************************");
 
         // how many scopas did you receive
         System.out.println("Please enter the number of scopas each player/team earned.");
@@ -95,85 +113,70 @@ public class ScopaScoringCLI {
         System.out.println("Player/Team 2:");
         int player2Scopas = scanner.nextInt();
         player2Score += player2Scopas;
+
+        System.out.println("***Score***");
         System.out.println("Player/Team 1 Score: " + player1Score);
         System.out.println("Player/Team 2 Score: " + player2Score);
+        System.out.println("***************************");
 
         //calculate Primiera points
         System.out.println("The prime for each team is determined by selecting the teams best card in each of the four suits, and totaling those four cards point values.");
-        System.out.println("Please enter the number of best cards for each suit below.");
-        // fix this code
+        System.out.println("Please enter the number of best cards for each suit for Player 1 below.");
         int player1PrimieraPoints = 0;
+        int player1PrimieraCards = 0;
+        int player2PrimieraPoints = 0;
+        int player2PrimieraCards = 0;
 
         System.out.println("Seven (sette): ");
         int sevens1 = scanner.nextInt();
+        int sevens2 = 4 - sevens1;
         player1PrimieraPoints += (sevens1 * 21);
-
-        System.out.println("Six (sei): ");
-        int sixes1 = scanner.nextInt();
-        player1PrimieraPoints += (sixes1 * 18);
-
-        System.out.println("Five (cinque): ");
-        int fives1 = scanner.nextInt();
-        player1PrimieraPoints += (fives1 * 15);
-
-        System.out.println("Four (quattro): ");
-        int fours1 = scanner.nextInt();
-        player1PrimieraPoints += (fours1 * 14);
-
-        System.out.println("Three (tre): ");
-        int threes1 = scanner.nextInt();
-        player1PrimieraPoints += (threes1 * 13);
-
-        System.out.println("Two (due): ");
-        int twos1 = scanner.nextInt();
-        player1PrimieraPoints += (twos1 * 12);
-
-        System.out.println("Ace/One (asso): ");
-        int aces1 = scanner.nextInt();
-        player1PrimieraPoints += (aces1 * 16);
-
-        System.out.println("Face cards (King/Horse/Jack): ");
-        int faceCards1 = scanner.nextInt();
-        player1PrimieraPoints += (faceCards1 * 10);
-
-        System.out.println("Player/Team 1 Primiera Points: " + player1PrimieraPoints);
-
-
-        System.out.println("How many of each card did player/team 2 receive?");
-        int player2PrimieraPoints = 0;
-
-        System.out.println("Seven (sette): ");
-        int sevens2 = scanner.nextInt();
+        player1PrimieraCards += sevens1;
         player2PrimieraPoints += (sevens2 * 21);
 
         System.out.println("Six (sei): ");
-        int sixes2 = scanner.nextInt();
+        int sixes1 = scanner.nextInt();
+        int sixes2 = 4 - sixes1;
+        player1PrimieraPoints += (sixes1 * 18);
         player2PrimieraPoints += (sixes2 * 18);
 
+        System.out.println("Ace/One (asso): ");
+        int aces1 = scanner.nextInt();
+        int aces2 = 4 - aces1;
+        player1PrimieraPoints += (aces1 * 16);
+        player2PrimieraPoints += (aces2 * 16);
+
         System.out.println("Five (cinque): ");
-        int fives2 = scanner.nextInt();
+        int fives1 = scanner.nextInt();
+        int fives2 = 4 - fives1;
+        player1PrimieraPoints += (fives1 * 15);
         player2PrimieraPoints += (fives2 * 15);
 
         System.out.println("Four (quattro): ");
-        int fours2 = scanner.nextInt();
+        int fours1 = scanner.nextInt();
+        int fours2 = 4 - fours1;
+        player1PrimieraPoints += (fours1 * 14);
         player2PrimieraPoints += (fours2 * 14);
 
         System.out.println("Three (tre): ");
-        int threes2 = scanner.nextInt();
+        int threes1 = scanner.nextInt();
+        int threes2 = 4 - threes1;
+        player1PrimieraPoints += (threes1 * 13);
         player2PrimieraPoints += (threes2 * 13);
 
         System.out.println("Two (due): ");
-        int twos2 = scanner.nextInt();
+        int twos1 = scanner.nextInt();
+        int twos2 = 4 - twos1;
+        player1PrimieraPoints += (twos1 * 12);
         player2PrimieraPoints += (twos2 * 12);
 
-        System.out.println("Ace/One (asso): ");
-        int aces2 = scanner.nextInt();
-        player2PrimieraPoints += (aces2 * 16);
-
-        System.out.println("Face cards (King/Horseman/Jack): ");
-        int faceCards2 = scanner.nextInt();
+        System.out.println("Face cards (King/Horse/Jack): ");
+        int faceCards1 = scanner.nextInt();
+        int faceCards2 = 4 - faceCards1;
+        player1PrimieraPoints += (faceCards1 * 10);
         player2PrimieraPoints += (faceCards2 * 10);
 
+        System.out.println("Player/Team 1 Primiera Points: " + player1PrimieraPoints);
         System.out.println("Player/Team 2 Primiera Points: " + player2PrimieraPoints);
 
         // if Primiera count is the same, no one gets a point
@@ -190,8 +193,6 @@ public class ScopaScoringCLI {
             System.out.println("Player/Team 2 gets the Primiera point for this round.");
             player2Score++;
         }
-        System.out.println("Player/Team 1 Score: " + player1Score);
-        System.out.println("Player/Team 2 Score: " + player2Score);
 
 
         System.out.println("***Total Score***");
