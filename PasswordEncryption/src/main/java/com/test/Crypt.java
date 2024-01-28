@@ -27,10 +27,23 @@ public class Crypt {
         System.out.println("Please enter [e] to encrypt or [d] to decrypt: ");
         String encryptOrDecrypt = scanner.next();
 
+        while (!(encryptOrDecrypt.equalsIgnoreCase("e") || encryptOrDecrypt.equalsIgnoreCase("d"))) {
+            System.out.println("Invalid response. Please enter [e] to encrypt or [d] to decrypt: ");
+            encryptOrDecrypt = scanner.next();
+        }
+
         if (encryptOrDecrypt.equalsIgnoreCase("e")) {
             // ask user to set a key
-            System.out.println("Please enter a number you would like to use as your key:");
-            int keyNumber = scanner.nextInt();
+            int keyNumber = 1;
+            do {
+                System.out.println("Please enter a number you would like to use as your key:");
+                keyNumber = scanner.nextInt();
+
+                if (keyNumber < 1 || keyNumber > 50) {
+                    System.out.println("Please enter a number between 1 and 50.");
+                }
+            } while (keyNumber < 1 || keyNumber > 50);
+
 
             // ask for password to encrypt
             System.out.println("Please enter the password you would like to encrypt (no spaces):");
@@ -47,10 +60,17 @@ public class Crypt {
 
         } else if (encryptOrDecrypt.equalsIgnoreCase("d")) {
             // ask for their key
-            System.out.println("Please enter your key: ");
-            int keyNumber = scanner.nextInt();
+            int keyNumber = 1;
+            do {
+                System.out.println("Please enter your key: ");
+                keyNumber = scanner.nextInt();
+
+                if (keyNumber < 1 || keyNumber > 50) {
+                    System.out.println("Please enter a number between 1 and 50.");
+                }
+            } while (keyNumber < 1 || keyNumber > 50);
             //ask user for code to decrypt
-            System.out.println("Please enter the password you would like to decrypt (no spaces):");
+            System.out.println("Please enter the password you would like to decrypt:");
             String encryptedPassword = scanner.next();
 
             // decrypt password
@@ -61,9 +81,6 @@ public class Crypt {
             }
             // let them know the decrypted password
             System.out.println(" is your decrypted password.");
-        } else {
-            System.out.println("Invalid response. Please enter a valid response (e/d)");
         }
-
     }
 }
