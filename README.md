@@ -1,6 +1,6 @@
--State Capital Quiz Created a Java app to test knowledge of the 50 state capitals, featuring realtime scoring & feedback. Are you smarter than a 5th grader?
-
 -Scopa Scoring Calculator Programmed a Java application to calculate scores for the Italian card game, Scopa
+
+-State Capital Quiz Created a Java app to test knowledge of the 50 state capitals, featuring realtime scoring & feedback. Are you smarter than a 5th grader?
 
 -Password Encryptor/Decryptor: Modeled a Java application to scramble a user's password and later decipher the encrypted password
 
